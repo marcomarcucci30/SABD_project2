@@ -21,6 +21,15 @@ public class Query2Result {
         this.countEstPM = query2Accumulator.getShipIdsEstPM().size();
     }
 
+    public Query2Result(int countWestAM, int countWestPM, int countEastAM, int countEastPM, String cellId, LocalDateTime startDate) {
+        this.countWestAM = countWestAM;
+        this.countWestPM = countWestPM;
+        this.countEstAM = countEastAM;
+        this.countEstPM = countEastPM;
+        this.cellId = cellId;
+        this.startDate = startDate;
+    }
+
     public LocalDateTime getEndDate() {
         return endDate;
     }

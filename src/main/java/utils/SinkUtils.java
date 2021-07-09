@@ -131,6 +131,9 @@ public class SinkUtils {
                 for (Query2Result result: first.get()){
                     if (count == 3)//se ho più di 3 elementi termino la classifica
                         break;
+                    if (checkVoidValue(index, result)){
+                        break;
+                    }
                     count++;
                     atLest = true;
                     String cellId = result.getCellId();
@@ -141,6 +144,21 @@ public class SinkUtils {
         }
         if (atLest)
             builder.deleteCharAt(builder.length()-1);
+    }
+
+    private static boolean checkVoidValue(int index, Query2Result result) {
+        switch (index){
+            case 0:
+                return result.getCountWestAM() == 0;
+            case 1:
+                return result.getCountWestPM() == 0;
+            case 2:
+                return result.getCountEstAM() == 0;
+            case 3:
+                return result.getCountEstPM() == 0;
+        }
+        return true;
+
     }
 
 }

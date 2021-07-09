@@ -1,5 +1,5 @@
 timestamp,sea,slot_a,rank_a,slot_p,rank_p
-2015-03-10,West Mediterranean,AM,D1-D2-D31,PM,D1-C1-D2
-2015-03-10,Est Mediterranean,AM,D20-C20-D31,PM,C20-D31-C31
+2015-03-10,West Mediterranean,AM,D1-D2,PM,D1-C1-D2
+2015-03-10,Est Mediterranean,AM,C20-D20-B18,PM,C20-B18-E31
 2015-04-07,West Mediterranean,AM,H8-J14-F7,PM,H8-G8-F8
-2015-04-07,Est Mediterranean,AM,D20-D19-D18,PM,D20-C20-D19
+2015-04-07,Est Mediterranean,AM,D20-D19-C20,PM,D20-C20-D19

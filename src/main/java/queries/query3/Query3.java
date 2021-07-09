@@ -31,7 +31,7 @@ public class Query3 {
         dataStreamOneHourOutput.addSink(new FlinkKafkaProducer<>(KafkaProperties.QUERY3_ONE_HOUR_TOPIC,
                 (KafkaSerializationSchema<String>) (s, aLong) ->
                         new ProducerRecord<>(KafkaProperties.QUERY3_ONE_HOUR_TOPIC, s.getBytes(StandardCharsets.UTF_8)),
-                props, FlinkKafkaProducer.Semantic.EXACTLY_ONCE)).name("q3_one_hour_kafka");
+                props, FlinkKafkaProducer.Semantic.EXACTLY_ONCE)).setParallelism(1).name("q3_one_hour_kafka");
         //generazione benchmark
         //dataStreamOneHourOutput.addSink(new BenchmarkSink());
 
@@ -45,7 +45,7 @@ public class Query3 {
         dataStreamTwoHourOutput.addSink(new FlinkKafkaProducer<>(KafkaProperties.QUERY3_TWO_HOUR_TOPIC,
                 (KafkaSerializationSchema<String>) (s, aLong) ->
                         new ProducerRecord<>(KafkaProperties.QUERY3_TWO_HOUR_TOPIC, s.getBytes(StandardCharsets.UTF_8)),
-                props, FlinkKafkaProducer.Semantic.EXACTLY_ONCE)).name("q3_two_hour_kafka");
+                props, FlinkKafkaProducer.Semantic.EXACTLY_ONCE)).setParallelism(1).name("q3_two_hour_kafka");
         //generazione benchmark
         //dataStreamTwoHourOutput.addSink(new BenchmarkSink());
 

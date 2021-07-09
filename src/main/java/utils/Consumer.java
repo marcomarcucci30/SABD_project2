@@ -128,7 +128,6 @@ public class Consumer {
      * Generazione dei thread consumer
      * @param args void
      */
-    @SuppressWarnings("fallthrough")
     public static void main(String[] args) throws InterruptedException {
         Logger.getRootLogger().setLevel(Level.OFF);
         ArrayList<ConsumerThread> consumers = new ArrayList<>();

@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+    zookeeper:
+        image: zookeeper
+        container_name: zookeeper
+        restart: always
+        ports:
+            - "2181:2181"
+            - "2888:2888"
+            - "3888:3888"
+        tty: false
+        stdin_open: false
+
+    kafka_broker_1:
+        image: effeerre/kafka
+        container_name: kafka_broker_1
+        depends_on:
+            - zookeeper
+        links:
+            - zookeeper
+        ports:
+            - "9092:9092"
+        environment:
+            - BROKER_ID=0
+        stdin_open: true
+        tty: true
+
+    kafka_broker_2:
+        image: effeerre/kafka
+        container_name: kafka_broker_2
+        depends_on:
+            - zookeeper
+        links:
+            - zookeeper
+        ports:
+            - "9093:9092"
+        environment:
+            - BROKER_ID=1
+        stdin_open: true
+        tty: true
+
+    kafka_broker_3:
+        image: effeerre/kafka
+        container_name: kafka_broker_3
+        depends_on:
+            - zookeeper
+        links:
+            - zookeeper
+        ports:
+            - "9094:9092"
+        environment:
+            - BROKER_ID=2
+        stdin_open: true
+        tty: true

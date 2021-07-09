@@ -20,8 +20,6 @@ import java.util.TreeMap;
 public class Query2 {
 
     public static void run(DataStream<ShipData> dataStream){
-        System.out.println("prova");
-
         //datastream per processamento settimanale
         DataStream<String> dataStreamWeeklyOutput=dataStream.keyBy(ShipData::getCell).window(TumblingEventTimeWindows.of(Time.days(7), Time.minutes(3648))).
                 aggregate(new Query2Aggregator(), new Query2Process()).
@@ -49,7 +47,7 @@ public class Query2 {
                         new ProducerRecord<>(KafkaProperties.QUERY2_MONTHLY_TOPIC, s.getBytes(StandardCharsets.UTF_8)),
                 props, FlinkKafkaProducer.Semantic.EXACTLY_ONCE)).name("q2_monthly_kafka");
         //generazione benchmark
-        dataStreamMonthlyOutput.addSink(new BenchmarkSink());
+        //dataStreamMonthlyOutput.addSink(new BenchmarkSink());
     }
 
 
